@@ -2571,6 +2571,7 @@
             const control = campaignData.sectors[code]?.controller || 'Axis';
 
             document.getElementById('sector-modal-title').textContent = def.name;
+            const reinforced = campaignData.sectors[code]?.reinforced || 0;
             document.getElementById('sector-modal-content').innerHTML = `
                 <p><strong>Code:</strong> ${code}</p>
                 <p><strong>Type:</strong> ${def.type}</p>
@@ -2578,6 +2579,7 @@
                 ${def.landing ? '<p><strong>Landing Sector</strong> (cannot be captured by Axis)</p>' : ''}
                 ${def.city ? '<p><strong>City</strong> (victory objective)</p>' : ''}
                 ${def.flooded ? '<p><strong>Flooded</strong> (-1 BL for paradrop)</p>' : ''}
+                ${reinforced > 0 ? `<p><strong>Reinforcements:</strong> +${reinforced * 2} BL for next Allied attack (${reinforced} stack${reinforced > 1 ? 's' : ''})</p>` : ''}
                 <div class="mt-1">
                     ${(!def.landing && isAdmin) ? `<button onclick="toggleSectorControl('${code}'); closeModal('sector-modal');" class="${control === 'Allied' ? 'axis' : 'allied'}">
                         Change to ${control === 'Allied' ? 'Axis' : 'Allied'} Control
