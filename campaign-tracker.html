@@ -946,23 +946,12 @@
         }
 
         .event-banner-content {
-            display: inline-flex;
-            animation: scroll-left 30s linear infinite;
-        }
-
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            display: inline-block;
+            white-space: nowrap;
         }
 
         .event-banner-content span {
-            display: inline-block;
-            padding: 0 2rem;
-            flex-shrink: 0;
+            display: inline;
         }
     </style>
 </head>
@@ -3233,11 +3222,43 @@ Allied: ${allied} | Axis: ${axis}
                     bannerContent.innerHTML = `
                         <span>${text}${spacer}</span>
                         <span>${text}${spacer}</span>
-                        <span>${text}${spacer}</span>
-                        <span>${text}${spacer}</span>
                     `;
+                    startBannerScroll();
                 }
             });
+        }
+
+        let bannerScrollRAF = null;
+        function startBannerScroll() {
+            const banner = document.querySelector('.event-banner');
+            const content = document.getElementById('event-banner-content');
+            if (!banner || !content) return;
+
+            if (bannerScrollRAF) cancelAnimationFrame(bannerScrollRAF);
+
+            let offset = 0;
+            const speed = 50; // pixels per second
+            let lastTime = performance.now();
+
+            function scroll(now) {
+                const delta = (now - lastTime) / 1000;
+                lastTime = now;
+                offset += speed * delta;
+
+                // Get width of first span (one copy of text)
+                const span = content.querySelector('span');
+                if (span) {
+                    const spanWidth = span.offsetWidth;
+                    if (offset >= spanWidth) {
+                        offset -= spanWidth;
+                    }
+                }
+
+                content.style.transform = `translateX(-${offset}px)`;
+                bannerScrollRAF = requestAnimationFrame(scroll);
+            }
+
+            bannerScrollRAF = requestAnimationFrame(scroll);
         }
 
         // ============================================
