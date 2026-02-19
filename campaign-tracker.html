@@ -946,9 +946,8 @@
         }
 
         .event-banner-content {
-            display: inline-block;
-            animation: scroll-left 60s linear infinite;
-            padding-left: 100%;
+            display: inline-flex;
+            animation: scroll-left 30s linear infinite;
         }
 
         @keyframes scroll-left {
@@ -956,13 +955,14 @@
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateX(-50%);
             }
         }
 
         .event-banner-content span {
             display: inline-block;
-            padding: 0 1rem;
+            padding: 0 2rem;
+            flex-shrink: 0;
         }
     </style>
 </head>
