@@ -371,7 +371,7 @@ No defenders remain in contact. The assault ends.
 
 ---
 
-### Activation 3 *(1 Order Point spent)*
+### Activation 3 *(1 Hero Point spent)*
 
 The US player wants to get the remaining Sherman back into action. The Sherman Platoon was already activated this turn by an Order Point—they cannot be activated again by Order Points.
 
@@ -424,7 +424,7 @@ Hero Points remaining (US): **5**
 
 ---
 
-### Activation 4 *(1 Order Point spent)*
+### Activation 4 *(1 Hero Point spent)*
 
 The US player re-activates the **Rifle Platoon Leader** using **1 Hero Point**.
 

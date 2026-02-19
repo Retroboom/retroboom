@@ -2819,7 +2819,7 @@
 
         function renderGames() {
             const tbody = document.querySelector('#games-table tbody');
-            tbody.innerHTML = campaignData.games.slice().reverse().map(g => `
+            tbody.innerHTML = campaignData.games.slice().sort((a, b) => new Date(b.date) - new Date(a.date) || b.id - a.id).map(g => `
                 <tr>
                     <td>${g.id}</td>
                     <td>${g.date}</td>
