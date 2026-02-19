@@ -2699,7 +2699,7 @@
                 `).join('');
 
             // Recent games
-            const recent = campaignData.games.slice(-5).reverse();
+            const recent = campaignData.games.slice().sort((a, b) => new Date(b.date) - new Date(a.date) || b.id - a.id).slice(0, 5);
             document.getElementById('recent-games').innerHTML = recent.length === 0
                 ? '<p style="color: var(--text-secondary);">No games recorded yet.</p>'
                 : `<table>
