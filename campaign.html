@@ -1016,7 +1016,7 @@
             <div class="grid-2">
                 <div class="card">
                     <h2>City Control</h2>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Control all 7 cities for 7 days to win, or control the most cities by Week 8.</p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Control all 7 cities for 7 days to win, or control the most cities by Week 12.</p>
 
                     <!-- City Control -->
                     <div style="display: flex; gap: 0.5rem; align-items: center; justify-content: center; margin-bottom: 1rem;">
@@ -1434,7 +1434,7 @@
                 <h3>Campaign Victory Occurs When</h3>
                 <ul>
                     <li>Allies control all 7 city sectors for 7 consecutive days, OR</li>
-                    <li><strong>Week 8 is reached</strong> (whoever controls more city sectors wins)</li>
+                    <li><strong>Week 12 is reached — April 13th, 2026</strong> (whoever controls more city sectors wins)</li>
                 </ul>
 
                 <h3>When Victory Happens</h3>
@@ -1443,7 +1443,7 @@
                     <li>Final map photo posted with narrative conclusion</li>
                 </ol>
 
-                <h3>Map Reset (if needed before Week 8)</h3>
+                <h3>Map Reset (if needed before Week 12)</h3>
                 <ol>
                     <li>Keep all earned coins (they carry forward!)</li>
                     <li>Reset map to starting positions</li>
@@ -2610,15 +2610,15 @@
             const startDate = new Date('2026-01-16');
             const today = new Date();
             const weekNum = Math.max(1, Math.ceil((today - startDate) / (7 * 24 * 60 * 60 * 1000)));
-            document.getElementById('header-week').textContent = Math.min(weekNum, 8);
+            document.getElementById('header-week').textContent = Math.min(weekNum, 12);
         }
 
         // Countdown timer
         function updateCountdown() {
             // Campaign starts January 16th, 2026 at 12 noon EST (UTC-5)
             const startDate = new Date('2026-01-16T17:00:00Z'); // Noon EST = 5pm UTC
-            // Campaign ends March 16th, 2026 at midnight EST (UTC-5)
-            const endDate = new Date('2026-03-16T05:00:00Z'); // Midnight EST = 5am UTC
+            // Campaign ends April 13th, 2026 at midnight EST (UTC-4 EDT)
+            const endDate = new Date('2026-04-13T04:00:00Z'); // Midnight EDT = 4am UTC
             const now = new Date();
 
             const label = document.querySelector('.stat-item.countdown .label');
