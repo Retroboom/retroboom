@@ -1673,7 +1673,17 @@ function setCompanyType(id, type) {
 function addUnit(companyId, isCommander) {
   const c = state.companies.find(c => c.id === companyId);
   if (!c) return;
-  c.units.push(newUnit(isCommander));
+  const unit = newUnit(isCommander);
+  if (!isCommander) {
+    const allNames = state.companies.flatMap(co => co.units.map(u => u.name));
+    const nonCommanderCount = c.units.filter(u => !u.isCommander).length;
+    if (nonCommanderCount === 0) {
+      unit.name = 'Unit 1';
+    } else {
+      unit.name = nextCopyName('Unit 1', allNames);
+    }
+  }
+  c.units.push(unit);
   render();
 }
 
