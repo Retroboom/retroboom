@@ -21,6 +21,8 @@
             --text-primary: #f0f0f0;
             --text-muted: #888888;
             --border: #333333;
+            --accent: #c9a84c;
+            --accent-dim: #a08535;
         }
 
         body {
@@ -48,19 +50,20 @@
             font-family: 'Monoton', cursive;
             font-size: clamp(3rem, 7vw, 5.5rem);
             color: var(--text-primary);
-            letter-spacing: 2px;
+            letter-spacing: -1px;
             margin-bottom: 1.5rem;
             display: block;
             line-height: 1.1;
+            text-transform: uppercase;
         }
 
         .hero .sub {
             font-family: 'Barlow Condensed', sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-muted);
+            font-size: 1.4rem;
+            color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 6px;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -121,15 +124,21 @@
         }
 
         .btn-primary {
-            background: var(--text-primary);
+            background: var(--accent);
             color: var(--bg-base);
-            border: 1px solid var(--text-primary);
+            border: 1px solid var(--accent);
+            font-weight: 600;
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-muted);
-            border: 1px solid var(--text-muted);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-dim);
+            color: var(--accent);
         }
 
         /* Games Grid */
@@ -165,10 +174,11 @@
 
         .game-card.active {
             background: var(--bg-elevated);
+            border-left: 2px solid var(--accent);
         }
 
         .game-card.coming-soon {
-            opacity: 0.35;
+            opacity: 0.45;
         }
 
         .game-card-type {
@@ -177,7 +187,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--text-muted);
+            color: var(--accent-dim);
             margin-bottom: 0.5rem;
         }
 
@@ -188,6 +198,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.75rem;
+            color: var(--text-primary);
         }
 
         .game-card-desc {
@@ -239,6 +250,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
+            color: var(--accent);
         }
 
         .tool-link-desc {
@@ -266,7 +278,7 @@
         }
 
         footer a:hover {
-            color: var(--text-primary);
+            color: var(--accent);
         }
 
         /* Responsive */
@@ -309,7 +321,7 @@
         </div>
     </div>
     <div class="feature-image">
-        <img src="hail-of-fire/hailoffirecampaigntitle.png" alt="Hail of Fire — WWII Company Level Fast-Play Rules">
+        <img src="assets/logo.png" alt="Hail of Fire — WWII Company Level Fast-Play Rules">
     </div>
 </section>
 
