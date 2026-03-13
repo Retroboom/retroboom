@@ -14,6 +14,37 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         :root {
             --bg-base: #0a0a0a;
             --bg-elevated: #111111;
@@ -55,6 +86,7 @@
             display: block;
             line-height: 1.1;
             text-transform: uppercase;
+            animation: fadeUp 0.8s ease-out both;
         }
 
         .hero .sub {
@@ -66,12 +98,14 @@
             letter-spacing: 6px;
             max-width: 500px;
             margin: 0 auto;
+            animation: fadeUp 0.8s ease-out 0.3s both;
         }
 
         /* Feature Section */
         .feature {
             max-width: 1100px;
             margin: 0 auto;
+            animation: fadeIn 0.6s ease-out 0.5s both;
             padding: 5rem 2rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -322,7 +356,7 @@
 <body>
 
 <section class="hero">
-    <span class="wordmark">Retro Boom</span>
+    <span class="wordmark">Retro &nbsp;Boom</span>
     <p class="sub">Made to be Played.</p>
 </section>
 
@@ -340,7 +374,7 @@
     </div>
 </section>
 
-<section class="games-section" id="games">
+<section class="games-section reveal" id="games">
     <h2>Games</h2>
     <div class="games-grid">
 
@@ -389,7 +423,7 @@
     </div>
 </section>
 
-<section class="tools-section">
+<section class="tools-section reveal">
     <h2>Player Tools</h2>
     <div class="tools-grid">
         <a href="hail-of-fire/campaign.html" class="tool-link">
@@ -413,6 +447,13 @@
     <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">WargameVault</a>
     <a href="blog/">Blog</a>
 </footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
