@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hail of Fire: Design Diary — Retro Boom Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-base: #0a0a0a;
+            --bg-elevated: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #f0f0f0;
+            --text-muted: #888888;
+            --border: #333333;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 300;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Header */
+        .site-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .site-header a {
+            font-family: 'Monoton', cursive;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            transition: color 0.2s;
+        }
+
+        .site-header a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Article */
+        .post {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .post-meta {
+            margin-bottom: 2rem;
+        }
+
+        .post-meta .back {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .post-meta .back:hover {
+            color: var(--text-primary);
+        }
+
+        .post-date {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 400;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .post h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .post-body p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-body h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="/">Retro Boom Games</a>
+</header>
+
+<article class="post">
+    <div class="post-meta">
+        <a href="/blog/" class="back">&larr; All Posts</a>
+        <div class="post-date">Coming Soon</div>
+    </div>
+    <h1>Hail of Fire: Design Diary</h1>
+    <div class="post-body">
+        <!-- TODO: Replace with actual first post content -->
+        <p>This is a placeholder for the first Hail of Fire design diary entry. Content coming soon.</p>
+    </div>
+</article>
+
+<footer>
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="#">Discord</a> <!-- TODO: Discord invite URL -->
+    <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">WargameVault</a>
+</footer>
+
+</body>
+</html>
