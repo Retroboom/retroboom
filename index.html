@@ -96,8 +96,16 @@
             margin-bottom: 2rem;
         }
 
+        .feature-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
         .feature-image img {
-            width: 100%;
+            width: 130%;
+            max-width: none;
             display: block;
         }
 
@@ -119,26 +127,19 @@
             transition: opacity 0.2s;
         }
 
-        .btn:hover {
-            opacity: 0.8;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-base);
-            border: 1px solid var(--accent);
-            font-weight: 600;
-        }
-
+        .btn-primary,
         .btn-secondary {
             background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border);
+            color: var(--accent);
+            border: 1px solid var(--accent-dim);
+            transition: all 0.2s;
         }
 
+        .btn-primary:hover,
         .btn-secondary:hover {
-            border-color: var(--accent-dim);
-            color: var(--accent);
+            background: var(--accent);
+            color: var(--bg-base);
+            border-color: var(--accent);
         }
 
         /* Games Grid */
@@ -161,24 +162,25 @@
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1px;
             background: var(--border);
+        }
+
+        .games-grid .game-card:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
         }
 
         .game-card {
             background: var(--bg-card);
             padding: 2rem;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
         }
 
-        .game-card.active {
+        .game-card:hover {
             background: var(--bg-elevated);
             border-left: 2px solid var(--accent);
-        }
-
-        .game-card.coming-soon {
-            opacity: 0.45;
         }
 
         .game-card-type {
@@ -227,9 +229,13 @@
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1px;
             background: var(--border);
+        }
+
+        .tools-grid .tool-link:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
         }
 
         .tool-link {
@@ -293,6 +299,10 @@
                 order: -1;
             }
 
+            .feature-image img {
+                width: 110%;
+            }
+
             .hero {
                 padding: 4rem 1.5rem 3rem;
             }
@@ -300,6 +310,11 @@
             .games-section,
             .tools-section {
                 padding: 3rem 1.5rem;
+            }
+
+            .games-grid,
+            .tools-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -317,7 +332,7 @@
         <p>Company-level WWII miniatures. Fast, intuitive mechanics. Fog of war drives every decision. Ten years in development. Free to download. A regular feature at HMGS conventions, where game masters have earned more than a dozen awards running it.</p>
         <div class="btn-row">
             <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire" class="btn btn-primary">Download Free</a>
-            <a href="#" class="btn btn-secondary">Join the Discord</a> <!-- TODO: Discord invite URL -->
+            <a href="https://discord.gg/arQJtRj5cV" class="btn btn-secondary">Join the Discord</a>
         </div>
     </div>
     <div class="feature-image">
@@ -329,43 +344,43 @@
     <h2>Games</h2>
     <div class="games-grid">
 
-        <div class="game-card active">
+        <div class="game-card">
             <div class="game-card-type">Historical WWII Minis</div>
             <div class="game-card-title">Hail of Fire</div>
             <div class="game-card-desc">Company-level WWII miniatures. Fast, intuitive mechanics. Fog of war drives every decision.</div>
         </div>
 
-        <div class="game-card coming-soon">
+        <div class="game-card">
             <div class="game-card-type">Fantasy Minis</div>
             <div class="game-card-title">Ashen Empires</div>
             <div class="game-card-desc">Steampunk fantasy warfare running on a single engine: leadership. A cascading activation system puts command and control at the heart of every battle.</div>
         </div>
 
-        <div class="game-card coming-soon">
+        <div class="game-card">
             <div class="game-card-type">Co-op Minis</div>
             <div class="game-card-title">The Damned</div>
             <div class="game-card-desc">Simple rules, dark tone, evolving campaign. Co-op demon hunting focused on a narrative engine that tells a new story every time.</div>
         </div>
 
-        <div class="game-card coming-soon">
+        <div class="game-card">
             <div class="game-card-type">Sci-Fi Minis</div>
             <div class="game-card-title">Full Burn</div>
             <div class="game-card-desc">Fast-play military mecha combat — cross-table dashes, fast decisions, and the kinetic flair of your favorite action games. Lock on and burn.</div>
         </div>
 
-        <div class="game-card coming-soon">
+        <div class="game-card">
             <div class="game-card-type">TCG</div>
             <div class="game-card-title">Bleeding Edge</div>
             <div class="game-card-desc">A cyberpunk TCG built for immersive world building and dramatic emergent play. The world, the meta, all shaped by the players.</div>
         </div>
 
-        <div class="game-card coming-soon">
+        <div class="game-card">
             <div class="game-card-type">TTRPG</div>
             <div class="game-card-title">&lt;HOT//WIRED_&gt;</div>
             <div class="game-card-desc">No classes. No skill lists. A fast-play cyberpunk TTRPG where the Skill Scope system turns your character concept into your mechanics.</div>
         </div>
 
-        <div class="game-card coming-soon">
+        <div class="game-card">
             <div class="game-card-type">TTRPG</div>
             <div class="game-card-title">Forsaken Dark</div>
             <div class="game-card-desc">Fast-play dark fantasy survival. Brutal combat, desperate choices, and magic that summons something barely controllable and ancient.</div>
@@ -375,7 +390,7 @@
 </section>
 
 <section class="tools-section">
-    <h2>Campaign Tools</h2>
+    <h2>Player Tools</h2>
     <div class="tools-grid">
         <a href="hail-of-fire/campaign.html" class="tool-link">
             <div class="tool-link-title">Campaign Tracker</div>
@@ -394,7 +409,7 @@
 
 <footer>
     <span>retroboomgames.com</span>
-    <a href="#">Discord</a> <!-- TODO: Discord invite URL -->
+    <a href="https://discord.gg/arQJtRj5cV">Discord</a>
     <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">WargameVault</a>
     <a href="blog/">Blog</a>
 </footer>
