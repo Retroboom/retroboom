@@ -21,6 +21,7 @@
             --text-primary: #f0f0f0;
             --text-muted: #888888;
             --border: #333333;
+            --accent: #c9a84c;
         }
 
         body {
@@ -105,6 +106,20 @@
             color: var(--text-muted);
         }
 
+        .post-item a:hover .post-title {
+            color: var(--text-muted);
+        }
+
+        .post-tag {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+
         .post-excerpt {
             color: var(--text-muted);
             font-size: 1rem;
@@ -143,6 +158,12 @@
 
 <main class="blog-main">
     <h1>Blog</h1>
+
+    <article class="post-item">
+        <div class="post-date">March 2026 &mdash; Hail of Fire</div>
+        <h2 class="post-title"><a href="a-primer-for-new-players.html">A Primer for New Players</a></h2>
+        <p class="post-excerpt">Hail of Fire has a short rulebook, but it takes a few games to internalize how it wants to be played. A guide to the concepts that, once they click, make everything else make sense.</p>
+    </article>
 
     <!-- TODO: Replace placeholder with first real post -->
     <article class="post-item">

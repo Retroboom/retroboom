@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Primer for New Players — Retro Boom Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-base: #0a0a0a;
+            --bg-elevated: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #f0f0f0;
+            --text-muted: #888888;
+            --border: #333333;
+            --accent: #c9a84c;
+            --accent-dim: #7a6230;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 300;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Header */
+        .site-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .site-header a {
+            font-family: 'Monoton', cursive;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            transition: color 0.2s;
+        }
+
+        .site-header a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Article */
+        .post {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .post-meta {
+            margin-bottom: 2rem;
+        }
+
+        .post-meta .back {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+
+        .post-meta .back:hover {
+            color: var(--text-primary);
+        }
+
+        .post-tag {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-date {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 400;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .post h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .post-deck {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .post-body p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-body h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .post-body .summary-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 2px solid var(--accent);
+            padding: 1.5rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .post-body .summary-box h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .post-body .summary-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .post-body .summary-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .post-cta {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .post-cta a {
+            color: var(--accent);
+            transition: color 0.2s;
+        }
+
+        .post-cta a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="/">Retro Boom Games</a>
+</header>
+
+<article class="post">
+    <div class="post-meta">
+        <a href="/blog/" class="back">&larr; All Posts</a>
+        <div class="post-tag">Hail of Fire</div>
+        <div class="post-date">March 2026</div>
+    </div>
+    <h1>A Primer for New Players</h1>
+    <p class="post-deck">Hail of Fire has a short rulebook, but it takes a few games to internalize how it wants to be played. This is a quick guide to the thinking behind the mechanics — the concepts that, once they click, make everything else make sense.</p>
+
+    <div class="post-body">
+
+        <h2>How to Think About the Game</h2>
+        <p>Everything in Hail of Fire is built around two core concepts: Fire and Maneuver, and battlefield friction — what we call Fog of War. You'll give orders to platoons without knowing if they'll follow. You'll fire on enemies without knowing if they're killed. You'll hit an enemy tank and watch it stop, not knowing if the crew is dead or just shaken.</p>
+        <p>This is the game. Embrace the uncertainty. The chaos is where the interesting decisions live.</p>
+
+        <h2>Shooting Suppresses. Assaults Kill.</h2>
+        <p>Small arms fire at range is unlikely to destroy enemy teams outright. What it does is stack RFPs and create suppression, preventing enemies from firing back and making them vulnerable to assault. Teams in Hard Cover are very difficult to kill with fire alone — but the same result that keeps them alive is exactly what makes them easy to kill in an assault.</p>
+
+        <h2>It's Fire and Maneuver</h2>
+        <p>Keep fire on the enemy while advancing. One section fires while another moves. One platoon supports while another maneuvers. If you stop advancing to keep shooting, your attack stalls. The goal every turn is to keep RFPs on enemy teams while still moving forward.</p>
+
+        <h2>Scout Before You Commit</h2>
+        <p>Against hidden defenders, your first job is to make them reveal in bad positions before committing your main force. Push single infantry teams forward aggressively. A lone rifle team can only receive 1 RFP per fire order, so defenders will often let it pass. Once they show their hand, deploy where resistance is weakest. Recon units extend reveal distance to 20" and can get a free activation when enemies reveal in their line of sight. Probe, reveal, then concentrate force where they're weak.</p>
+
+        <h2>Use Smoke</h2>
+        <p>Smoke blocks line of sight completely. Your troops can cross open ground safely, enemy fire support gets neutralized, and you can reposition without taking fire. Don't overlook it.</p>
+
+        <h2>Leaders Are Force Multipliers</h2>
+        <p>Your Platoon Leader doesn't shoot, but they're invaluable. A single Order Point activates their entire unit. Beyond that, they can rally a suppressed team, add +1 Rate of Fire to a team in base contact, grant +3" movement to help reach cover, or give re-rolls on failed Assault Checks. Use your Leader's ability every activation. It costs nothing.</p>
+
+        <h2>Assaults Require Fire Support</h2>
+        <p>Defenders who aren't Ready are destroyed without fighting back. Each RFP on an assaulted team swings the odds heavily in your favor. Either have a supporting platoon fire at the target the same turn you assault, or split your platoon's orders — some teams fire while others move into contact. An assault against Ready defenders is a coin flip. An assault against suppressed defenders is not.</p>
+
+        <div class="summary-box">
+            <h3>The Short Version</h3>
+            <p>Fire to suppress, assault to destroy.</p>
+            <p>Scout first, commit second.</p>
+            <p>Smoke changes everything.</p>
+            <p>Keep fire on the assault target, always.</p>
+            <p>Hard Cover keeps you alive; suppression gets you killed in an assault.</p>
+        </div>
+
+        <p class="post-cta">Hail of Fire is <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">free to download on WargameVault</a>. If you have questions or want to share a battle report, come find us on <a href="https://discord.gg/arQJtRj5cV">Discord</a>.</p>
+
+    </div>
+</article>
+
+<footer>
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://discord.gg/arQJtRj5cV">Discord</a>
+    <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">WargameVault</a>
+</footer>
+
+</body>
+</html>
