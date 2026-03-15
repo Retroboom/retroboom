@@ -564,16 +564,17 @@
             transform: translate(-50%, -50%) scale(1.5);
         }
 
-        /* Fortified sector pulsing ring - defender held, reserves in position */
+        /* Reinforced sector ripple - expands outward and fades */
         @keyframes reinforcedPulse {
-            0% { box-shadow: 0 0 0 0 rgba(80, 160, 255, 0.7), 0 2px 4px rgba(0,0,0,0.5); }
-            50% { box-shadow: 0 0 0 6px rgba(80, 160, 255, 0), 0 2px 4px rgba(0,0,0,0.5); }
-            100% { box-shadow: 0 0 0 0 rgba(80, 160, 255, 0.7), 0 2px 4px rgba(0,0,0,0.5); }
+            0% { box-shadow: 0 0 0 0 rgba(255, 40, 40, 0.85), 0 2px 4px rgba(0,0,0,0.5); }
+            100% { box-shadow: 0 0 0 8px rgba(255, 40, 40, 0), 0 2px 4px rgba(0,0,0,0.5); }
         }
 
         .sector-marker.reinforced {
-            animation: reinforcedPulse 2s ease-in-out infinite;
+            animation: reinforcedPulse 1.8s ease-out infinite;
+            border: 2px solid rgba(255, 40, 40, 0.9) !important;
         }
+
 
         /* Territory Arrow */
         .territory-arrow-svg {
@@ -1234,7 +1235,7 @@
                 <h3>Step 8: Resolve Sector Control</h3>
                 <ul>
                     <li><strong>Initiative winner wins:</strong> The attacking faction captures the target sector (exception: Axis cannot capture landing sectors)</li>
-                    <li><strong>Initiative winner loses:</strong> No territory changes (attack repelled). The target sector receives a <strong>Fortification marker</strong> — defenders held and have reserves in position, granting <strong>+2 BL to the defender</strong> for all future attacks on that sector. Stacks with each consecutive repelled attack (+2, +4, +6, etc.). Cleared when the sector is captured or its supply is cut. Applies to either side when defending</li>
+                    <li><strong>Initiative winner loses:</strong> No territory changes (attack repelled). The target sector receives a <strong>Reinforcement marker</strong> — defenders held and have reserves in position, granting <strong>+2 BL to the defender</strong> for all future attacks on that sector. Stacks with each consecutive repelled attack (+2, +4, +6, etc.). Cleared when the sector is captured or its supply is cut. Applies to either side when defending</li>
                     <li>Update store map immediately (move pins)</li>
                 </ul>
 
@@ -1344,7 +1345,7 @@
                     <li><strong>Attacker (either side):</strong> +1 BL per additional friendly sector bordering the target (beyond sector attacking from), maximum +4 BL</li>
                     <li><strong>Allies Only:</strong> Flat +2 BL if fighting in a landing sector (Utah, Omaha, Gold, Juno, Sword) — attacking or defending</li>
                     <li><strong>Flooded Sector Paradrop:</strong> -1 BL penalty to Allies (difficult landing conditions)</li>
-                    <li><strong>Fortification Bonus (defender):</strong> +2 BL per consecutive repelled attack on a sector (stacks: +2, +4, +6, etc.). Cleared when the sector is captured or supply is cut. Applies to either side when defending</li>
+                    <li><strong>Reinforcement Bonus (defender):</strong> +2 BL per consecutive repelled attack on a sector (stacks: +2, +4, +6, etc.). Cleared when the sector is captured or supply is cut. Applies to either side when defending</li>
                 </ul>
             </div>
 
@@ -1459,7 +1460,7 @@
                     <li>☐ Check coin totals and announce rerolls (coins ÷ 4)</li>
                     <li>☐ Calculate BL modifiers</li>
                     <li>☐ Play game</li>
-                    <li>☐ Initiative winner wins = attacker captures target (Axis cannot capture landing sectors); loses = no change + fortification stacks (+2 BL to defender per repelled attack)</li>
+                    <li>☐ Initiative winner wins = attacker captures target (Axis cannot capture landing sectors); loses = no change + reinforcement stacks (+2 BL to defender per repelled attack)</li>
                     <li>☐ Update map, post to Discord with photos</li>
                 </ul>
 
@@ -1468,7 +1469,7 @@
                     <li>Attacker (either side): +1 BL per additional friendly sector bordering target (max +4)</li>
                     <li>Allies only: +2 BL in landing sectors (Utah, Omaha, Gold, Juno, Sword)</li>
                     <li>Paradrops: Allies -1 BL if flooded</li>
-                    <li>Fortification: +2 BL to defender per repelled attack (stacks, cleared on capture or supply cut)</li>
+                    <li>Reinforcement:+2 BL to defender per repelled attack (stacks, cleared on capture or supply cut)</li>
                     <li>Landing sectors cannot be captured by Axis</li>
                 </ul>
 
@@ -2428,7 +2429,7 @@
                 // Stack fortification: defenders held, each repelled attack adds +2 BL bonus to defender
                 if (!campaignData.sectors[targetSector]) campaignData.sectors[targetSector] = { controller: defenderFaction };
                 campaignData.sectors[targetSector].reinforced = (campaignData.sectors[targetSector].reinforced || 0) + 1;
-                console.log('No territory change - defender held. Fortification on', targetSector, '=', campaignData.sectors[targetSector].reinforced);
+                console.log('No territory change - defender held. Reinforcement on', targetSector, '=', campaignData.sectors[targetSector].reinforced);
             } else if (defenderFaction === attackerFaction) {
                 // Target already attacker-controlled
                 game.sectorChanged = null;
@@ -2565,7 +2566,7 @@
             campaignData.sectors[code].reinforced = 0;
             saveToFirebase();
             renderAll();
-            alert(`Supply cut! Fortification on ${SECTOR_DEFINITIONS[code]?.name || code} cleared (was ${stacks} stack${stacks !== 1 ? 's' : ''}). Apply Morale -1 to all Axis units in this sector.`);
+            alert(`Supply cut! Reinforcement on ${SECTOR_DEFINITIONS[code]?.name || code} cleared (was ${stacks} stack${stacks !== 1 ? 's' : ''}). Apply Morale -1 to all Axis units in this sector.`);
         }
 
         function showSectorModal(code) {
@@ -2581,13 +2582,13 @@
                 ${def.landing ? '<p><strong>Landing Sector</strong> (cannot be captured by Axis)</p>' : ''}
                 ${def.city ? '<p><strong>City</strong> (victory objective)</p>' : ''}
                 ${def.flooded ? '<p><strong>Flooded</strong> (-1 BL for paradrop)</p>' : ''}
-                ${reinforced > 0 ? `<p><strong>Fortified:</strong> +${reinforced * 2} BL bonus to Axis defense (${reinforced} stack${reinforced > 1 ? 's' : ''} — attack repelled ${reinforced} time${reinforced > 1 ? 's' : ''})</p>` : ''}
+                ${reinforced > 0 ? `<p><strong>Reinforced:</strong> +${reinforced * 2} BL bonus to Axis defense (${reinforced} stack${reinforced > 1 ? 's' : ''} — attack repelled ${reinforced} time${reinforced > 1 ? 's' : ''})</p>` : ''}
                 <div class="mt-1">
                     ${(!def.landing && isAdmin) ? `<button onclick="toggleSectorControl('${code}'); closeModal('sector-modal');" class="${control === 'Allied' ? 'axis' : 'allied'}">
                         Change to ${control === 'Allied' ? 'Axis' : 'Allied'} Control
                     </button>` : ''}
                     ${(reinforced > 0 && isAdmin) ? `<button onclick="cutSupply('${code}'); closeModal('sector-modal');" class="axis" style="margin-top:0.5rem;">
-                        Cut Supply (resets fortification + apply Morale -1)
+                        Cut Supply (resets reinforcement + apply Morale -1)
                     </button>` : ''}
                 </div>
             `;
@@ -3733,6 +3734,7 @@ Allied: ${allied} | Axis: ${axis}
                 marker.title = `${def.name} (${ctrl})${labelSuffix}`;
                 marker.dataset.code = def.name + labelSuffix;
                 marker.setAttribute('data-code', def.name + labelSuffix);
+
 
                 // Different behavior in edit mode
                 if (editMode) {
