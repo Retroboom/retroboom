@@ -2425,11 +2425,11 @@
             if (!attackerWon) {
                 // Defender wins = attack repelled, fortify target sector
                 game.sectorChanged = null;
-                game.result = `No change (${attackerFaction} attack repelled)`;
-                // Stack fortification: defenders held, each repelled attack adds +2 BL bonus to defender
                 if (!campaignData.sectors[targetSector]) campaignData.sectors[targetSector] = { controller: defenderFaction };
                 campaignData.sectors[targetSector].reinforced = (campaignData.sectors[targetSector].reinforced || 0) + 1;
-                console.log('No territory change - defender held. Reinforcement on', targetSector, '=', campaignData.sectors[targetSector].reinforced);
+                const newStacks = campaignData.sectors[targetSector].reinforced;
+                game.result = `Defense held — ${defenderFaction} reinforced (+${newStacks * 2} BL bonus, ${newStacks} stack${newStacks !== 1 ? 's' : ''})`;
+                console.log('No territory change - defender held. Reinforcement on', targetSector, '=', newStacks);
             } else if (defenderFaction === attackerFaction) {
                 // Target already attacker-controlled
                 game.sectorChanged = null;
@@ -3410,10 +3410,10 @@ Allied: ${allied} | Axis: ${axis}
             if (!attackerWon) {
                 // Defender wins = attack repelled, fortify target sector
                 game.sectorChanged = null;
-                game.result = `No change (${attackerFaction} attack repelled)`;
-                // Stack fortification: defenders held, each repelled attack adds +2 BL bonus to defender
                 if (!campaignData.sectors[targetSector]) campaignData.sectors[targetSector] = { controller: defenderFaction };
                 campaignData.sectors[targetSector].reinforced = (campaignData.sectors[targetSector].reinforced || 0) + 1;
+                const newStacks = campaignData.sectors[targetSector].reinforced;
+                game.result = `Defense held — ${defenderFaction} reinforced (+${newStacks * 2} BL bonus, ${newStacks} stack${newStacks !== 1 ? 's' : ''})`;
             } else if (defenderFaction === attackerFaction) {
                 // Target already attacker-controlled
                 game.sectorChanged = null;
@@ -3771,6 +3771,13 @@ Allied: ${allied} | Axis: ${axis}
             console.log('renderTerritoryArrows called, arrows:', campaignData.territoryArrows);
             if (!campaignData.territoryArrows || campaignData.territoryArrows.length === 0) {
                 console.log('No arrows to render');
+                return;
+            }
+
+            // Wait for map image to load before calculating coordinates
+            const mapImg = document.getElementById('campaign-map');
+            if (mapImg && !mapImg.complete) {
+                mapImg.addEventListener('load', () => renderTerritoryArrows(overlay), { once: true });
                 return;
             }
 
