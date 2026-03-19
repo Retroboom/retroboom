@@ -2595,6 +2595,14 @@
             showModal('sector-modal');
         }
 
+        // Normalize legacy result strings for display
+        function formatResult(result) {
+            if (!result) return 'N/A';
+            return result
+                .replace('No change (Allied attack repelled)', 'Defense held — Axis reinforced (+2 BL bonus)')
+                .replace('No change (Axis attack repelled)', 'Defense held — Allied reinforced (+2 BL bonus)');
+        }
+
         // Rendering Functions
         function renderAll() {
             renderHeader();
@@ -2714,7 +2722,7 @@
                         <tr>
                             <td>${g.date}</td>
                             <td>${g.alliedPlayer} vs ${g.axisPlayer}</td>
-                            <td><span class="badge ${g.winner.toLowerCase()}">${g.winner}</span> - ${g.result || 'N/A'}</td>
+                            <td><span class="badge ${g.winner.toLowerCase()}">${g.winner}</span> - ${formatResult(g.result)}</td>
                         </tr>
                     `).join('')}
                 </table>`;
@@ -2833,7 +2841,7 @@
                     <td>${g.axisPlayer}</td>
                     <td>${g.fromSector} → ${g.toSector}</td>
                     <td><span class="badge ${g.winner.toLowerCase()}">${g.winner}</span></td>
-                    <td>${g.result || 'N/A'}</td>
+                    <td>${formatResult(g.result)}</td>
                     <td>
                         <div class="action-buttons">
                             ${isAdmin ? `<button class="danger" onclick="deleteGame(${g.id})">Delete</button>` : '-'}
