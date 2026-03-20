@@ -302,6 +302,41 @@
             line-height: 1.5;
         }
 
+        /* Navbar */
+        .site-nav {
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-base);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .site-nav ul li a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .site-nav ul li a:hover {
+            color: var(--accent);
+        }
+
         /* Footer */
         footer {
             max-width: 1100px;
@@ -357,6 +392,17 @@
     </style>
 </head>
 <body>
+
+<nav class="site-nav">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="#player-tools">Player Tools</a></li>
+        <li><a href="https://www.wargamevault.com/en/product/188181/hail-of-fire" target="_blank">WargameVault</a></li>
+        <li><a href="https://discord.gg/arQJtRj5cV" target="_blank">Discord</a></li>
+    </ul>
+</nav>
 
 <section class="hero">
     <span class="wordmark">RETR<span class="wordmark-o">O</span> &nbsp;BOOM</span>
@@ -426,7 +472,7 @@
     </div>
 </section>
 
-<section class="tools-section reveal">
+<section class="tools-section reveal" id="player-tools">
     <h2>Player Tools</h2>
     <div class="tools-grid">
         <a href="hail-of-fire/campaign.html" class="tool-link">

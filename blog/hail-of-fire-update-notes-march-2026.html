@@ -58,6 +58,41 @@
             color: var(--text-primary);
         }
 
+        /* Navbar */
+        .site-nav {
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-base);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .site-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .site-nav ul li a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .site-nav ul li a:hover {
+            color: var(--accent);
+        }
+
         /* Article */
         .post {
             max-width: 720px;
@@ -219,6 +254,17 @@
 <header class="site-header">
     <a href="/">RETRO BOOM</a>
 </header>
+
+<nav class="site-nav">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/#games">Games</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#player-tools">Player Tools</a></li>
+        <li><a href="https://www.wargamevault.com/en/product/188181/hail-of-fire" target="_blank">WargameVault</a></li>
+        <li><a href="https://discord.gg/arQJtRj5cV" target="_blank">Discord</a></li>
+    </ul>
+</nav>
 
 <article class="post">
     <div class="post-meta">
