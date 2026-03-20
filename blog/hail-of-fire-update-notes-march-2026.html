@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hail of Fire — Update Notes, March 2026 — Retro Boom Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-base: #0a0a0a;
+            --bg-elevated: #111111;
+            --bg-card: #1a1a1a;
+            --text-primary: #f0f0f0;
+            --text-muted: #888888;
+            --border: #333333;
+            --accent: #c9a84c;
+            --accent-dim: #7a6230;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 300;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Header */
+        .site-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .site-header a {
+            font-family: 'Monoton', cursive;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            transition: color 0.2s;
+        }
+
+        .site-header a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Article */
+        .post {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .post-meta {
+            margin-bottom: 2rem;
+        }
+
+        .post-meta .back {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+
+        .post-meta .back:hover {
+            color: var(--text-primary);
+        }
+
+        .post-tag {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .post-date {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 400;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .post h1 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .post-deck {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .post-body p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-body h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .post-body .summary-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 2px solid var(--accent);
+            padding: 1.5rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .post-body .summary-box h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .post-body .summary-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .post-body .summary-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .post-cta {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .post-cta a {
+            color: var(--accent);
+            transition: color 0.2s;
+        }
+
+        .post-cta a:hover {
+            color: var(--text-primary);
+        }
+
+        .post-sign {
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="/">Retro Boom Games</a>
+</header>
+
+<article class="post">
+    <div class="post-meta">
+        <a href="/blog/" class="back">&larr; All Posts</a>
+        <div class="post-tag">Hail of Fire</div>
+        <div class="post-date">March 2026</div>
+    </div>
+    <h1>Hail of Fire — Update Notes, March 2026</h1>
+    <p class="post-deck">A new version of Hail of Fire is live on WargameVault. Here's what changed and why.</p>
+
+    <div class="post-body">
+
+        <h2>The Big One: Order Dice</h2>
+        <p>The most significant change is to how Order Points are generated. The original system — roll 2d6 and take the higher — is simple and fast, and it works well for the standard 6–8 unit game HoF was designed around. But as the game has grown to accommodate smaller skirmishes and larger engagements, that fixed range starts to feel disconnected from what's actually on the table.</p>
+        <p>The new system ties order generation directly to your force. Roll one die for each friendly Platoon Leader and Vehicle Unit deployed. Each 4+ generates an Order Point, plus one is always added to the total. A large force generates more orders. A battered one generates fewer. A commander whose platoon leaders are being picked off feels it immediately.</p>
+        <p>It also integrates the Hero Die more naturally. Rather than a separate doubles trigger resetting your Hero Points mid-game, the Hero Die is now part of your order pool — one die of a different color rolled alongside the rest. When it rolls a 6, your Hero Points refresh. Having a consistently identified die in the pool also opens the door for other event triggers. The optional Air Support rules, for example, use the Hero Die to determine when air attacks occur.</p>
+        <p>I've been running this system for about six months across a range of game sizes, including the ongoing Normandy campaign at my local store. It plays cleanly, teaches quickly, and produces better results at the extremes. I'm confident enough to make it the primary system.</p>
+
+        <h2>Troop Quality</h2>
+        <p>Troop Quality rules are new to this version. The first benefit is consistency. All Checks in Hail of Fire use a 4+ target, and Troop Quality works the same way — simply adjusting which results get a second look rather than introducing new target numbers or modifiers.</p>
+        <p>Beyond consistency, it expresses meaningful differences in a tactically satisfying way. Elite troops are more survivable, with a re-roll when resolving Received Fire Points that can pull a result back from Killed to Suppressed. They are also better trained with crewed weapons, re-rolling 1s when firing guns at vehicles. Poor troops are the mirror image, re-rolling 6s in the same situations. The result is a more historically accurate representation of what separated elite, battle-hardened troops from the rest.</p>
+
+        <h2>Clarity and Presentation</h2>
+        <p>A significant amount of work went into rewriting and reformatting sections throughout the rulebook and the Quick Reference Sheet. The result is cleaner organization, clearer language, and a meaningfully reduced word count across the board. The rules say the same things, just more directly. If you've ever gotten lost in the assault sequence or the artillery procedure, this version should help.</p>
+
+        <h2>Other Changes</h2>
+        <p>Force building guidance has been expanded and clarified. Several minor rules clarifications and typo fixes throughout.</p>
+
+        <p class="post-cta">Hail of Fire is free. If you're getting value from it, the best thing you can do is bring it to the table, tell someone about it, or <a href="https://discord.gg/arQJtRj5cV">join the conversation on Discord</a>. Download the latest version on <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">WargameVault</a>.</p>
+
+        <p class="post-sign">Thanks for playing.<br>— Brandon</p>
+
+    </div>
+</article>
+
+<footer>
+    <a href="/">Home</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://discord.gg/arQJtRj5cV">Discord</a>
+    <a href="https://www.wargamevault.com/en/product/188181/hail-of-fire">WargameVault</a>
+</footer>
+
+</body>
+</html>
